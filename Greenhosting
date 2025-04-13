@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free domain and hosting selection tool. Compare multiple domain options and find the best hosting solution for your needs.">
+    <title>Free Domain & Hosting Selection website | Optimize Your Web Presence</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+            
+            --rounded-sm: 0.25rem;
+            --rounded-md: 0.5rem;
+            --rounded-lg: 0.75rem;
+            --rounded-xl: 1rem;
+            --rounded-full: 9999px;
+            
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7ff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo i {
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Domain Tool */
+        .domain-tool {
+            background-color: white;
+            border-radius: var(--rounded-xl);
+            box-shadow: var(--shadow-lg);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .domain-input-container {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .domain-input-group {
+            display: flex;
+            position: relative;
+        }
+        
+        .domain-input {
+            flex: 1;
+            padding: 1.25rem 1.5rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--rounded-lg) 0 0 var(--rounded-lg);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .domain-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .domain-submit {
+            padding: 0 2rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 var(--rounded-lg) var(--rounded-lg) 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .domain-submit:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .tld-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tld-option {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--light);
+            border-radius: var(--rounded-full);
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .tld-option:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .tld-option.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Results Section */
+        .results-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .domain-card {
+            background-color: white;
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-md);
+            padding: 1.75rem;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .domain-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .domain-name i {
+            font-size: 1rem;
+        }
+        
+        .domain-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--rounded-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .domain-status.available {
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+        }
+        
+        .domain-status.taken {
+            background-color: rgba(239, 35, 60, 0.1);
+            color: var(--danger);
+        }
+        
+        .domain-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .domain-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .domain-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--rounded-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn i {
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background-color: var(--light);
+            color: var(--dark);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #e5177e;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Compare Section */
+        .compare-section {
+            display: none;
+            margin-top: 3rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .compare-table-container {
+            overflow-x: auto;
+            margin-bottom: 2rem;
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-md);
+            background-color: white;
+        }
+        
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        .compare-table th {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        
+        .compare-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .compare-table tr:hover td {
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        /* Hosting Recommendations */
+        .hosting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .hosting-card {
+            background-color: white;
+            border-radius: var(--rounded-lg);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .hosting-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        
+        .hosting-card.popular {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 2rem;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.25rem 1.5rem;
+            border-radius: var(--rounded-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .hosting-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .hosting-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .hosting-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gray);
+        }
+        
+        .hosting-features {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .hosting-features ul {
+            list-style: none;
+        }
+        
+        .hosting-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .hosting-features li i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+        
+        .hosting-best-for {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .hosting-best-for strong {
+            color: var(--dark);
+        }
+        
+        /* Ad Containers */
+        .ad-container {
+            background-color: white;
+            border-radius: var(--rounded-lg);
+            padding: 1.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px dashed var(--light-gray);
+        }
+        
+        .ad-label {
+            font-size: 0.75rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .ad-label::before, .ad-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--light-gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            font-size: 0.8rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hosting-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 99;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .domain-input-group {
+                flex-direction: column;
+            }
+            
+            .domain-input {
+                border-radius: var(--rounded-lg);
+                margin-bottom: 0.5rem;
+            }
+            
+            .domain-submit {
+                border-radius: var(--rounded-lg);
+                padding: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .domain-tool {
+                padding: 1.5rem;
+            }
+            
+            .tld-option {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .domain-card {
+                padding: 1.5rem;
+            }
+            
+            .domain-actions {
+                flex-direction: column;
+            }
+            
+            .hosting-card {
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="/" class="logo">
+                    <i class="fas fa-globe"></i>
+                    Greenhosting
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/domain-checker">Domain Checker</a></li>
+                    <li><a href="/hosting-comparison">Hosting</a></li>
+                    <li><a href="/blog">Resources</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Find Your Perfect Domain & Hosting</h1>
+            <p>Search, compare, and register domains with our free tool. Get personalized hosting recommendations to launch your website today.</p>
+            <div class="hero-btns">
+                <a href="#domain-tool" class="btn btn-accent">
+                    <i class="fas fa-search"></i> Check Domain
+                </a>
+                <a href="#hosting" class="btn btn-secondary">
+                    <i class="fas fa-server"></i> View Hosting
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main class="main-content container">
+        <!-- Ad Space - Top -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Your Ad Unit -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Domain Tool Section -->
+        <section id="domain-tool" class="section">
+            <div class="section-header">
+                <h2>Domain Availability Checker</h2>
+                <p>Search for your perfect domain name across multiple extensions and compare prices</p>
+            </div>
+            
+            <div class="domain-tool">
+                <div class="domain-input-container">
+                    <div class="domain-input-group">
+                        <input type="text" class="domain-input" id="domain-input" placeholder="Enter your desired domain name">
+                        <button class="domain-submit" id="search-button">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    
+                    <div class="tld-options">
+                        <div class="tld-option selected" data-tld=".com">.com</div>
+                        <div class="tld-option" data-tld=".net">.net</div>
+                        <div class="tld-option" data-tld=".org">.org</div>
+                        <div class="tld-option" data-tld=".io">.io</div>
+                        <div class="tld-option" data-tld=".co">.co</div>
+                        <div class="tld-option" data-tld=".dev">.dev</div>
+                        <div class="tld-option" data-tld=".tech">.tech</div>
+                        <div class="tld-option" data-tld=".store">.store</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <button id="check-availability" class="btn btn-primary">
+                            <i class="fas fa-check-circle"></i> Check Availability
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="results-section" id="results-section">
+                    <h3 style="margin-bottom: 1.5rem;">Domain Availability Results</h3>
+                    <div class="results-grid" id="results-grid">
+                        <!-- Results will be dynamically inserted here -->
+                    </div>
+                </div>
+                
+                <div class="compare-section" id="compare-section">
+                    <h3 style="margin-bottom: 1.5rem;">Compare Selected Domains</h3>
+                    <div class="compare-table-container">
+                        <table class="compare-table">
+                            <thead>
+                                <tr>
+                                    <th>Domain</th>
+                                    <th>Status</th>
+                                    <th>Price (1st Year)</th>
+                                    <th>Renewal Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="compare-table-body">
+                                <!-- Comparison rows will be dynamically inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="text-align: center;">
+                        <button id="clear-selection" class="btn btn-secondary">
+                            <i class="fas fa-trash-alt"></i> Clear Selection
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Ad Space - Middle -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Your Ad Unit -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- Hosting Recommendations -->
+        <section id="hosting" class="section">
+            <div class="section-header">
+                <h2>Hosting Recommendations</h2>
+                <p>Find the perfect hosting solution for your website with our personalized recommendations</p>
+            </div>
+            
+            <div class="hosting-grid" id="hosting-grid">
+                <!-- Hosting option 1 -->
+                <div class="hosting-card">
+                    <h3 class="hosting-name">Starter Hosting</h3>
+                    <div class="hosting-price">$2.99<span>/month</span></div>
+                    
+                    <div class="hosting-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 1 Website</li>
+                            <li><i class="fas fa-check"></i> 10GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unmetered Bandwidth</li>
+                            <li><i class="fas fa-check"></i> Free SSL Certificate</li>
+                            <li><i class="fas fa-check"></i> 1 Email Account</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="hosting-best-for"><strong>Best for:</strong> Personal blogs, small websites</p>
+                    
+                    <div class="hosting-actions">
+                        <a href="#" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-shopping-cart"></i> Select Plan
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hosting option 2 (Popular) -->
+                <div class="hosting-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3 class="hosting-name">Business Hosting</h3>
+                    <div class="hosting-price">$5.99<span>/month</span></div>
+                    
+                    <div class="hosting-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Unlimited Websites</li>
+                            <li><i class="fas fa-check"></i> 50GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unmetered Bandwidth</li>
+                            <li><i class="fas fa-check"></i> Free SSL Certificate</li>
+                            <li><i class="fas fa-check"></i> Unlimited Email Accounts</li>
+                            <li><i class="fas fa-check"></i> Free Domain (1 year)</li>
+                            <li><i class="fas fa-check"></i> Daily Backups</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="hosting-best-for"><strong>Best for:</strong> Small businesses, growing websites</p>
+                    
+                    <div class="hosting-actions">
+                        <a href="#" class="btn btn-accent" style="width: 100%;">
+                            <i class="fas fa-shopping-cart"></i> Select Plan
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hosting option 3 -->
+                <div class="hosting-card">
+                    <h3 class="hosting-name">WordPress Hosting</h3>
+                    <div class="hosting-price">$4.99<span>/month</span></div>
+                    
+                    <div class="hosting-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 1 WordPress Website</li>
+                            <li><i class="fas fa-check"></i> 20GB SSD Storage</li>
+                            <li><i class="fas fa-check"></i> Unmetered Bandwidth</li>
+                            <li><i class="fas fa-check"></i> Free SSL Certificate</li>
+                            <li><i class="fas fa-check"></i> 5 Email Accounts</li>
+                            <li><i class="fas fa-check"></i> WordPress Auto-Updates</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="hosting-best-for"><strong>Best for:</strong> WordPress blogs and websites</p>
+                    
+                    <div class="hosting-actions">
+                        <a href="#" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-shopping-cart"></i> Select Plan
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Domain Tools</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Domain Checker</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Domain Generator</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> WHOIS Lookup</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Domain Transfer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Hosting</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shared Hosting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> VPS Hosting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> WordPress Hosting</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dedicated Servers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Knowledge Base</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Webinars</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Affiliate Program</a></li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 DomainTools. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        const domainInput = document.getElementById('domain-input');
+        const searchButton = document.getElementById('search-button');
+        const checkAvailabilityButton = document.getElementById('check-availability');
+        const tldOptions = document.querySelectorAll('.tld-option');
+        const resultsSection = document.getElementById('results-section');
+        const resultsGrid = document.getElementById('results-grid');
+        const compareSection = document.getElementById('compare-section');
+        const compareTableBody = document.getElementById('compare-table-body');
+        const clearSelectionButton = document.getElementById('clear-selection');
+        const hostingGrid = document.getElementById('hosting-grid');
+        
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Selected TLDs
+        let selectedTlds = ['.com'];
+        
+        // Sample pricing data (in a real app, this would come from an API)
+        const pricingData = {
+            '.com': { firstYear: 12.99, renewal: 18.99 },
+            '.net': { firstYear: 14.99, renewal: 19.99 },
+            '.org': { firstYear: 13.99, renewal: 17.99 },
+            '.io': { firstYear: 39.99, renewal: 49.99 },
+            '.co': { firstYear: 29.99, renewal: 34.99 },
+            '.dev': { firstYear: 19.99, renewal: 24.99 },
+            '.tech': { firstYear: 34.99, renewal: 44.99 },
+            '.store': { firstYear: 29.99, renewal: 39.99 }
+        };
+        
+        // Toggle TLD selection
+        tldOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const tld = option.getAttribute('data-tld');
+                
+                if (option.classList.contains('selected')) {
+                    if (selectedTlds.length > 1) {
+                        option.classList.remove('selected');
+                        selectedTlds = selectedTlds.filter(item => item !== tld);
+                    }
+                } else {
+                    option.classList.add('selected');
+                    selectedTlds.push(tld);
+                }
+            });
+        });
+        
+        // Check domain availability
+        function checkAvailability() {
+            const domainName = domainInput.value.trim();
+            
+            if (domainName === '') {
+                showAlert('Please enter a domain name');
+                return;
+            }
+            
+            if (selectedTlds.length === 0) {
+                showAlert('Please select at least one TLD');
+                return;
+            }
+            
+            // Clear previous results
+            resultsGrid.innerHTML = '';
+            
+            // Generate results for each selected TLD
+            selectedTlds.forEach(tld => {
+                const fullDomain = domainName + tld;
+                const isAvailable = Math.random() > 0.5; // Random availability for demo
+                const priceInfo = pricingData[tld] || { firstYear: 0, renewal: 0 };
+                
+                const domainCard = document.createElement('div');
+                domainCard.className = 'domain-card';
+                domainCard.innerHTML = `
+                    <div class="domain-name">
+                        <i class="fas fa-globe"></i> ${fullDomain}
+                    </div>
+                    <div class="domain-status ${isAvailable ? 'available' : 'taken'}">
+                        <i class="fas ${isAvailable ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                        ${isAvailable ? 'Available' : 'Taken'}
+                    </div>
+                    ${isAvailable ? `
+                        <div class="domain-price">$${priceInfo.firstYear.toFixed(2)}<span>/first year</span></div>
+                        <div class="domain-actions">
+                            <button class="btn btn-primary add-to-compare" data-domain="${fullDomain}" data-price="${priceInfo.firstYear}" data-renewal="${priceInfo.renewal}">
+                                <i class="fas fa-plus"></i> Compare
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-shopping-cart"></i> Register
+                            </button>
+                        </div>
+                    ` : `
+                        <div class="domain-actions">
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-search"></i> WHOIS Lookup
+                            </button>
+                        </div>
+                    `}
+                `;
+                
+                resultsGrid.appendChild(domainCard);
+            });
+            
+            // Show results section
+            resultsSection.style.display = 'block';
+            
+            // Initialize compare buttons
+            document.querySelectorAll('.add-to-compare').forEach(button => {
+                button.addEventListener('click', addToCompare);
+            });
+            
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Add domain to compare table
+        function addToCompare(e) {
+            const button = e.target.closest('.add-to-compare');
+            const domain = button.getAttribute('data-domain');
+            const price = button.getAttribute('data-price');
+            const renewal = button.getAttribute('data-renewal');
+            
+            // Check if domain already in comparison
+            if (document.querySelector(`.compare-table tr[data-domain="${domain}"]`)) {
+                showAlert('This domain is already in the comparison table');
+                return;
+            }
+            
+            // Add to comparison table
+            const row = document.createElement('tr');
+            row.setAttribute('data-domain', domain);
+            row.innerHTML = `
+                <td>${domain}</td>
+                <td><span class="domain-status available"><i class="fas fa-check-circle"></i> Available</span></td>
+                <td>$${parseFloat(price).toFixed(2)}</td>
+                <td>$${parseFloat(renewal).toFixed(2)}</td>
+                <td>
+                    <button class="btn btn-primary" style="padding: 0.5rem 1rem;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <button class="btn btn-secondary remove-from-compare" style="padding: 0.5rem 1rem;">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            `;
+            
+            compareTableBody.appendChild(row);
+            
+            // Show compare section if hidden
+            compareSection.style.display = 'block';
+            
+            // Initialize remove buttons
+            document.querySelectorAll('.remove-from-compare').forEach(btn => {
+                btn.addEventListener('click', removeFromCompare);
+            });
+            
+            // Scroll to compare section
+            compareSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Remove domain from compare table
+        function removeFromCompare(e) {
+            const row = e.target.closest('tr');
+            row.remove();
+            
+            // Hide compare section if empty
+            if (compareTableBody.children.length === 0) {
+                compareSection.style.display = 'none';
+            }
+        }
+        
+        // Clear comparison table
+        clearSelectionButton.addEventListener('click', () => {
+            compareTableBody.innerHTML = '';
+            compareSection.style.display = 'none';
+        });
+        
+        // Show alert message
+        function showAlert(message) {
+            const alert = document.createElement('div');
+            alert.className = 'alert-message';
+            alert.innerHTML = `
+                <div style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); 
+                    background-color: var(--danger); color: white; padding: 1rem 2rem; 
+                    border-radius: var(--rounded-lg); box-shadow: var(--shadow-lg); z-index: 1000;
+                    display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-exclamation-circle"></i> ${message}
+                </div>
+            `;
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 3000);
+        }
+        
+        // Event listeners
+        checkAvailabilityButton.addEventListener('click', checkAvailability);
+        searchButton.addEventListener('click', checkAvailability);
+        
+        domainInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkAvailability();
+            }
+        });
+        
+        // Initialize sections as hidden
+        resultsSection.style.display = 'none';
+        compareSection.style.display = 'none';
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
